@@ -45,27 +45,3 @@ def huntercounter(hunts):
 
 if __name__ == "__main__":
     huntercounter(100000)
-
-# if __name__ == "__main__":
-# d = 6
-# x = 3
-# n = int(1e6)
-# tries = 20
-# ticks = np.zeros(n, dtype=int)
-# clock = np.full_like(ticks, 20)
-# booms = np.zeros(n, dtype=bool)
-# omens = np.zeros(n, dtype=bool)
-#
-# for _ in range(tries):
-#     rolls = np.random.choice(np.arange(1, d + 1), n)
-#     clock -= rolls
-#     booms[clock < 0] = True
-#     # booms[clock <= 0] = True
-#     ticks[~booms] += 1
-#     clock[~booms & (clock == 0)] = 3
-#     omens[clock == 3] = True
-#
-# print(ticks)
-#
-# plt.hist(ticks, bins=np.arange(1, tries + 1), density=True)
-# plt.show()
