@@ -20,7 +20,9 @@ def underclock(rule, n, d=6, tries=20):
         rolls = np.random.choice(np.arange(1, d + 1), n)
         clock, ticks, omens, run = rule(rolls, clock, ticks, omens, run, d)
 
-    tick_count, tick_bins = np.histogram(ticks, bins=np.arange(1, 22), density=True)
+    tick_count, tick_bins = np.histogram(ticks,
+                                         bins=np.arange(1, 22),
+                                         density=True)
 
     omen_sum = np.sum(omens)
     omen_count = np.array([omen_sum, n - omen_sum])
@@ -59,7 +61,7 @@ def alternative_rule(rolls, clock, ticks, omens, run, d, x):
     return clock, ticks, omens, run
 
 
-def classic_random_encounter(rolls, clock, ticks, omens, run, *args):
+def classic_random_encounter(rolls, clock, ticks, omens, run, *_):
     r"""
     A classic random encounter system where every turn the random encounter die
     is rolled. On a 1 the encounter is triggered. On a 2 an omen is triggered.
@@ -94,11 +96,11 @@ if __name__ == "__main__":
     a2 = underclock(lambda *args: alternative_rule(*args, x=2), N, d)
 
     # ::::::::::::::::::: Plots :::::::::::::::::::
-    labels = ["Classic", "Alt 2", "Alt 3", "Alt 4", "Goblinpunch Rule"]
+    labels = ["Classic", "Alt 2", "Alt 3", "Alt 4", "Goblinpunch"]
     fig, axs = plt.subplots(1, 2, figsize=(14, 7), layout="constrained")
-    fig.suptitle(
-        "Underclock Rule Comparisons\n" f" Dice = d{d}\n" f"{N:,} Samples Each"
-    )
+    fig.suptitle("Underclock Rule Comparisons\n"
+                 f" Dice = d{d}\n"
+                 f"{N:,} Samples Each")
 
     # Encounter Frequency Histogram
     axs[0].set_title("Clock Ticks Until Encounter")
@@ -114,18 +116,17 @@ if __name__ == "__main__":
 
     # Encounter Foreshadowing plot.
     axs[1].set_title("Encounter Foreshadowing")
-    omens = np.stack((classic[2], a2[2], a3[2], a4[2], orig[2]), 1)
-    x = np.arange(len(labels))
-    multiplier = 0
+    omens = np.stack((classic[2], a2[2], a3[2], a4[2], orig[2]), 1) / N * 100
+    bottom = np.zeros_like(omens[0])
 
     for la, om in zip(["Forshadowed", "Surprised"], omens):
-        offset = 0.25 * multiplier
-        rects = axs[1].bar(x + offset, om / N * 100, 0.25, label=la)
-        axs[1].bar_label(rects, padding=3)
-        multiplier += 1
+        rects = axs[1].bar(labels, om, 0.5, label=la, bottom=bottom)
+        bottom += om
+        axs[1].bar_label(rects)
 
-    axs[1].set_xticks(x + 0.25, labels)
     axs[1].set_xlabel("Underclock Rule")
     axs[1].set_ylabel("Frequency (Percentage)")
     axs[1].legend(loc="upper left", ncols=2)
     plt.show()
+    # saveformat = "png"
+    # plt.savefig(f"UnderclockD{d}.{saveformat}", format=saveformat)
