@@ -6,7 +6,7 @@ Arnold Kemp in their [Goblinpunch Blog](https://goblinpunch.blogspot.com/2023/04
 This improved implementation speeds up the computation substantially, while performing 100x more samples.
 It also compares Arnold's original rule to several alternates of my own devising.
 
-## Original Underclock Rule Summarized
+## Goblinpunch Underclock Rule
 
 - Ticks repeat on a Max roll (6 for d6)
 - Encounter triggered when clock goes negative.
@@ -20,6 +20,13 @@ It also compares Arnold's original rule to several alternates of my own devising
 - Clock resets to `x` whenever below x but still running
 - Omens triggered when clock <= `x`
 
+
+## Classic rule
+
+- Encounter triggered when roll == 1
+- Omen triggered when roll == 2 
+
+
 Below are the plots comparing the original rule to my alternate rules with different
 values of x, and for different sizes of dice. With these results I believe my "Alt 3"
 rule, where x == 3, is the my prefered improvement over the original rule. It maintains the
@@ -27,8 +34,10 @@ same distribution and a similar mean number of rolls-till-encounter as the origi
 rule, but foreshadows encounters more frequently (which I like) while resetting the clock
 more frequently, keeping the exact moment of encounter more uncertain than in the original.
 
-![](UnderclockD6.png)
-![](UnderclockD8.png)
-![](UnderclockD10.png)
-![](UnderclockD12.png)
-![](UnderclockD4.png)
+Also included is the classic rule of rolling for random encounters on every tick/turn.
+
+![Distribution with a D6](UnderclockD6.png)
+![Distribution with a D8](UnderclockD8.png)
+![Distribution with a D10](UnderclockD10.png)
+![Distribution with a D12](UnderclockD12.png)
+![Distribution with a D4](UnderclockD4.png)
