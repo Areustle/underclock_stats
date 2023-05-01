@@ -36,8 +36,8 @@ more frequently, keeping the exact moment of encounter more uncertain than in th
 
 Also included is the classic rule of rolling for random encounters on every tick/turn.
 
-![Distribution with a D6](UnderclockD6.png)
-![Distribution with a D8](UnderclockD8.png)
-![Distribution with a D10](UnderclockD10.png)
-![Distribution with a D12](UnderclockD12.png)
-![Distribution with a D4](UnderclockD4.png)
+![Distribution with a D6](UnderclockD6.svg)
+![Distribution with a D8](UnderclockD8.svg)
+![Distribution with a D10](UnderclockD10.svg)
+![Distribution with a D12](UnderclockD12.svg)
+![Distribution with a D4](UnderclockD4.svg)
