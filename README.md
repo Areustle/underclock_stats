@@ -13,7 +13,7 @@ It also compares Arnold's original rule to several alternates of my own devising
 - Clock resets to 3 when it reaches exactly zero
 - Omens triggered when clock == 3
 
-## My Alternative Underclock rule
+## Alternative Underclock Rules
 
 - Ticks repeat on a Max roll (6 for d6)
 - Encounter triggered when clock reaches zero (or goes negative.)
